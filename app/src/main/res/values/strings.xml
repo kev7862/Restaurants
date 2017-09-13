@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Restaurants</string>
+    <string name="textView">My Restaurants</string>
+    <string name="button">Find Restaurants</string>
+</resources>
