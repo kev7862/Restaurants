@@ -6,11 +6,21 @@
     android:layout_height="match_parent"
     tools:context="kev7862.github.restaurants.MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/chai"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textView"
+        android:textColor="@color/colorTextIcons"
         android:textSize="40sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -18,10 +28,12 @@
         android:id="@+id/textView" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button"
         android:id="@+id/findRestaurantButton"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextIcons"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
