@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -25,23 +26,6 @@ public class MainActivity extends AppCompatActivity {
         mLocationEditText = (EditText) findViewById(R.id.locationEditText);
         mfindRestaurantsButton = (Button) findViewById(R.id.findRestaurantButton);
         mtextView = (TextView) findViewById(R.id.textView);
-       //setting-up my listview in my restaurants activity
-        ListView myListView = (ListView)findViewById(R.id.myListView);
-        ArrayList<String> myRestaurants = new ArrayList<>();
-        myRestaurants.add("Lifeof pie");
-        myRestaurants.add("Screen Door");
-        myRestaurants.add("Luc Lac");
-        myRestaurants.add("Sweet Basil");
-        myRestaurants.add("Slappy Cakes");
-        myRestaurants.add("Equinox");
-        myRestaurants.add("Miss Delta's");
-        myRestaurants.add("Andina");
-        myRestaurants.add("Lardo");
-        myRestaurants.add("Portland City Grill");
-        myRestaurants.add("Fat Head's Brewery");
-        myRestaurants.add("Chipotle");
-        myRestaurants.add("Subway");
-
 
         // Setting up my textView font type
         Typeface Pacifico = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
