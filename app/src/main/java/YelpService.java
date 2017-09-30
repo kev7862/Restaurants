@@ -1,5 +1,6 @@
 import javax.security.auth.callback.Callback;
 
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 import se.akerfeldt.okhttp.signpost.SigningInterceptor;
@@ -22,6 +23,11 @@ public class YelpService {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new SigningInterceptor(consumer))
                 .build();
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.YELP_BASE_URL).newBuilder();
+        urlBuilder.addQueryParameter(Constants.YELP_LOCATION_QUERY_PARAMETER, location);
+        String url = urlBuilder.build().toString();
+    }
 
     }
 
