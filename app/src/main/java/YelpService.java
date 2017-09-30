@@ -1,6 +1,8 @@
 import javax.security.auth.callback.Callback;
 
+import okhttp3.OkHttpClient;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
+import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
 /**
  * Created by matite on 9/30/17.
@@ -16,6 +18,10 @@ public class YelpService {
 
         OkHttpOAuthConsumer consumer = new OkHttpOAuthConsumer(Constants.YELP_CONSUMER_KEY, Constants.YELP_CONSUMER_SECRET);
         consumer.setTokenWithSecret(Constants.YELP_TOKEN, Constants.YELP_TOKEN_SECRET);
+// OkHttpClient resposible for creating and sending our request
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new SigningInterceptor(consumer))
+                .build();
 
     }
 
