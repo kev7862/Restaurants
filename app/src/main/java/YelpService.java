@@ -1,5 +1,7 @@
-import javax.security.auth.callback.Callback;
+package kev7862.github.restaurants;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,7 +18,7 @@ import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
 public class YelpService {
 
-    public static void findRestaurants(String location, Callback callback) {
+    public static void findRestaurants(String location, okhttp3.Callback callback) {
 
         OkHttpOAuthConsumer consumer = new OkHttpOAuthConsumer(Constants.YELP_CONSUMER_KEY, Constants.YELP_CONSUMER_SECRET);
         consumer.setTokenWithSecret(Constants.YELP_TOKEN, Constants.YELP_TOKEN_SECRET);
@@ -33,6 +35,9 @@ public class YelpService {
         Request request= new Request.Builder()
                 .url(url)
                 .build();
+// Calling each request Aychronously
+        Call call = client.newCall(request);
+        call.enqueue(callback);
     }
 
     }
