@@ -11,35 +11,33 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+
 public class RestaurantActivity extends AppCompatActivity {
-    private TextView mLocationEditText;
-    private ListView myListView;
-    private String[] restaurants = new String[] {"Mi Mero Mole", "Mother's Bistro",
-            "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
-            "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
-            "Lardo", "Portland City Grill", "Fat Head's Brewery",
-            "Chipotle", "Subway"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
 
-        myListView = (ListView) findViewById(R.id.myListView);
-        mLocationEditText = (TextView) findViewById(R.id.locationEditText);
+        private void getRestaurants(String location) {
+            final kev7862.github.restaurants.YelpService yelpService = new YelpService();
+            yelpService.findRestaurants(location, new Callback() {
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.select_dialog_singlechoice, restaurants);
-        myListView.setAdapter(adapter);
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
 
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String restaurant = ((TextView)view).getText().toString();
-                Toast.makeText(RestaurantActivity.this, restaurant, Toast.LENGTH_LONG).show();
-            }
-        });
+            });
+        }
+
+
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
